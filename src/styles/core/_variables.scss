@@ -1,0 +1,27 @@
+// Esta es la variable que usaremos como tamaño por defecto
+$defaultFontSize: 16;
+
+// Estos son los tamaños para las media-queries
+
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+// COLORS
+
+$orange-color: #F87070;
+$green-color: #70F3F8;
+$pink-color: #D881F8;
+$grey-color: #D7E0FF;
+$blue-color: #1E213F;
+$white-color: #FFFFFF;
+$dark-white-color: #EFF1FA;
+$dark-purple-color: #161932;
+
+// FONTS
+// font-family: 'Kumbh Sans', sans-serif; bold 700
+// font-family: 'Roboto Slab', serif; bold 700
+// font-family: 'Space Mono', monospace; regular 400
+
+$font-kumbh-sans: 'Kumbh Sans', sans-serif;
+$font-roboto-slab: 'Roboto Slab', serif;
+$font-space-mono: 'Space Mono', monospace;
