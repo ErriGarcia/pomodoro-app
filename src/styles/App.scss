@@ -10,7 +10,30 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
     &-container-buttons {
+        min-width: 78vw;
+        margin-top: 45px;
+        padding: 8px 31px 8px 6px;
         background-color: $dark-purple-color;
+        color: $grey-color;
+        font-family: $font-kumbh-sans;
+        font-size: 12px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-radius: 31.5px;
+
+        &-button-1 {
+            color: $blue-color;
+            background-color: $orange-color;
+            padding: 18px 23px;
+            border-radius: 26.5px;
+        }
     }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    opacity: 1;
 }
