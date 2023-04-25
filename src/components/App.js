@@ -1,29 +1,35 @@
-import '../styles/App.scss';
+import '../styles/App.scss'
+import logo from '../images/logo.svg'
+
 
 function App() {
   return (
-    <div>
-      <h1>pomodoro
-  short break
-  long break
+    <div className='main'>
+      <img className='main-logo' src={logo} alt="logo" />
+      <div className='main-container-buttons'>
+        <button className='main-container-buttons-1'>pomodoro</button>
+        <button className='main-container-buttons-2'>short break</button>
+        <button className='main-container-buttons-3'>long break</button>
+      </div>
+      <h1>
 
-  start 
-  pause
-  restart
+          start 
+          pause
+          restart
 
-  Settings
+          Settings
 
-  Time (minutes)
-  pomodoro
-  short break
-  long break
+          Time (minutes)
+          pomodoro
+          short break
+          long break
 
-  Font
-  Color
+          Font
+          Color
 
-  Apply</h1>
+          Apply</h1>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,0 +1,16 @@
+@import './core/reset';
+@import './core/animations';
+@import './core/mixins';
+@import './core/variables';
+
+.main {
+    height: 100vh;
+    padding: 32px 24px;
+    background-color: $blue-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &-container-buttons {
+        background-color: $dark-purple-color;
+    }
+}
