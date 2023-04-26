@@ -9,8 +9,9 @@
     background-color: $blue-color;
     @include displayFlex(column, center, center);
 
+    // {/* Buttons */}
     &-container-buttons {
-        min-width: 78vw;
+        min-width: 327px;
         margin-top: 45px;
         padding: 8px 31px 8px 6px;
         background-color: $dark-purple-color;
@@ -27,7 +28,7 @@
         }
     }
 
-
+    // {/* Circle */}
     .circle {
         margin-top: 48px;
         min-width: 300px;
@@ -52,6 +53,8 @@
         }
 
     }
+
+    // {/* Settings */}
     .settings-button {
         margin-top: 80px;
 
@@ -61,9 +64,9 @@
         color: $grey-color
     }
 
-    // Modal container
+    // {/* Modal container */}
     .modal {
-        // display: none;
+        display: none;
         position: fixed;
         z-index: 1;
         left: 0;
@@ -80,11 +83,12 @@
             margin: auto;
             margin-top: 13%;
             width: 85%;
-            height: 80%;
+            // height: 80%;
             padding: 24px;
             color: $dark-purple-color;
             border-radius: 15px;
 
+            // {/* Header Section */}
             &-header {
                 @include displayFlex(row, space-between, center);
 
@@ -106,6 +110,7 @@
             }
         }
 
+        // {/* Time Section */}
         .settings-container-time {
             margin: 24px 0 24px 0;
             @include displayFlex(column, center, center);
@@ -140,6 +145,7 @@
             }
         }
 
+        // {/* Font Section */}
         .settings-container-font {
             margin: 24px 0 24px;
             @include displayFlex(column, center, center);
@@ -177,12 +183,63 @@
             }
         }
 
+        // {/* Color Section */}
         .settings-container-color {
-            margin: 24px 0 24px;
+            margin: 24px 0 30px;
             @include displayFlex(column, center, center);
 
             &-title {
                 @include titleSettings();
+            }
+
+            &-container {
+                margin-top: 18px;
+                @include displayFlex(row, center, center);
+                gap: 16px;
+
+                &-button-1, &-button-2, &-button-3 {
+                    width: 40px;
+                    height: 40px;
+                    @include circle();
+                }
+
+                &-button-1 {
+                    background-color: $orange-color;
+
+                    .material-icons {
+                        color: $dark-purple-color;
+                    }
+                }
+
+                &-button-2 {
+                    background-color: $aqua-color;
+
+                    .material-icons {
+                        display: none;
+                        // color: $dark-purple-color;
+                    }
+                }
+
+                &-button-3 {
+                    background-color: $pink-color;
+
+                    .material-icons {
+                        display: none;
+                        // color: $dark-purple-color;
+                    }
+                }
+            }
+        }
+
+        .settings-container-apply-container {
+            @include displayFlex(column, center, center);
+            &-button {
+            border-radius: 26.5px;
+            width: 140px;
+            height: 53px;
+            background-color: $orange-color;
+            position: absolute;
+            bottom: 40px;
             }
         }
     }

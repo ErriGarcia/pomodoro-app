@@ -89,7 +89,6 @@ function App() {
               <button className='settings-container-font-container-button-3'>Aa</button>
             </div>
           </section>
-
           <hr className='first-line' />
 
           {/* Color Section */}
@@ -98,17 +97,30 @@ function App() {
               color
             </h3>
             <div className='settings-container-color-container'>
-              <button className='settings-container-color-container-button-1'>red</button>
-              <button className='settings-container-color-container-button-2'>aqua</button>
-              <button className='settings-container-color-container-button-3'>violet</button>
+              <button className='settings-container-color-container-button-1'>
+                <span className='material-icons'>
+                  done
+                </span>
+              </button>
+              <button className='settings-container-color-container-button-2'>
+                <span className='material-icons'>
+                  done
+                </span>
+              </button>
+              <button className='settings-container-color-container-button-3'>
+                <span className='material-icons'>
+                  done
+                </span>
+              </button>
             </div>
           </section>
 
-          <button>apply</button>
+          <div className='settings-container-apply-container'>
+          <button className='settings-container-apply-container-button'>apply</button>
+          </div>
 
         </div>
       </div>
-
     </div>
   )
 }
