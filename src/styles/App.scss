@@ -96,7 +96,7 @@
 
     // {/* Modal container */}
     .modal {
-        // display: none;
+        display: none;
         position: fixed;
         z-index: 1;
         left: 0;
@@ -108,6 +108,7 @@
         background-color: rgba(0, 0, 0, 0.4);
     
         .settings-container {
+            position: relative;
             background-color: $white-color;
             font-family: $font-kumbh-sans;
             margin: auto;
@@ -117,6 +118,7 @@
             padding: 24px;
             color: $dark-purple-color;
             border-radius: 15px;
+            max-width: 540px;
 
             @include tablet {
                 width: 540px;
@@ -332,11 +334,11 @@
             height: 53px;
             background-color: $orange-color;
             position: absolute;
-            bottom: 40px;
+            bottom: -24px;
             color: $white-color;
 
             @include tablet {
-                bottom: 78px;
+                // bottom: 78px;
             }
             }
             &-button::first-letter {
