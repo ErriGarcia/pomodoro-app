@@ -19,7 +19,7 @@ function App() {
       {/* Circle */}
       <div className='circle'>
         <div className='circle-line-time'>
-          <button className='button-start'>start</button>
+          <button className='circle-line-time-button-start'>start</button>
         </div>
       </div>
 
@@ -30,73 +30,85 @@ function App() {
         </span>
       </button>
 
-      {/* Container overlay */}
-      <div className='settings-container'>
-        <section className='settings-container-header'>
-          <h2 className='settings-container-header-title'>
-            settings
-          </h2>
-          <button className='settings-container-header-button-close'>
-            <span className='material-icons-outlined'>
-              close
-            </span>
-          </button>
-        </section>
+      {/* Modal Container */}
+      <div className='modal'>
+        <div className='settings-container'>
 
-        <hr />
+          {/* Header Section */}
+          <section className='settings-container-header'>
+            <h2 className='settings-container-header-title'>
+              settings
+            </h2>
+            <button className='settings-container-header-button-close'>
+              <span className='material-symbols-outlined'>
+                close
+              </span>
+            </button>
+          </section>
+          <hr className='first-line' />
 
-        <section className='settings-container-time'>
-          <h3 className='settings-container-time-title'>
-            time (minutes)
-          </h3>
-          <form className='settings-container-time-form'>
-            <label className='settings-container-time-form-label' htmlFor='pomodoro'>
-              pomodoro
-              <input className='settings-container-time-form-label-input' type='number' min='1' max='25' />
-            </label>
+          {/* Time Section */}
+          <section className='settings-container-time'>
+            <h3 className='settings-container-time-title'>
+              time (minutes)
+            </h3>
+            <form className='settings-container-time-form'>
+              <div className='settings-container-time-form-container'>
+                <label className='settings-container-time-form-container-label' htmlFor='pomodoro'>
+                  pomodoro
+                </label>
+                <input className='settings-container-time-form-container-input' type='number' name='pomodoro' id='pomodoro' min='1' max='25' value='25' />
+              </div>
 
-            <label className='settings-container-time-form-label' htmlFor='pomodoro'>
-              short break
-              <input className='settings-container-time-form-label-input' type='number' min='1' max='5' />
-            </label>
+              <div className='settings-container-time-form-container'>
+                <label className='settings-container-time-form-container-label' htmlFor='short-break'>
+                  short break
+                </label>
+                <input className='settings-container-time-form-container-input' name='short-break' id='short-break' type='number' min='1' max='5' value='5' />
+              </div>
 
-            <label className='settings-container-time-form-label' htmlFor='pomodoro'>
-              long break
-              <input className='settings-container-time-form-label-input' type='number' min='1' max='15' />
-            </label>
-          </form>
-        </section>
 
-        <hr />
+              <div className='settings-container-time-form-container'>
+                <label className='settings-container-time-form-container-label' htmlFor='long-break'>
+                  long break
+                </label>
+                <input className='settings-container-time-form-container-input' name='long-break' id='long-break' type='number' min='1' max='15' value='15' />
+              </div>
+            </form>
+          </section>
+          <hr className='first-line' />
 
-        <section className='settings-container-font'>
-          <h3 className='settings-container-font-title'>
-            Font
-          </h3>
-          <div className='settings-container-font-container'>
-            <button className='settings-container-font-container-button-1'>aa</button>
-            <button className='settings-container-font-container-button-2'>aa</button>
-            <button className='settings-container-font-container-button-3'>aa</button>
-          </div>
-        </section>
+          {/* Font Section */}
+          <section className='settings-container-font'>
+            <h3 className='settings-container-font-title'>
+              Font
+            </h3>
+            <div className='settings-container-font-container'>
+              <button className='settings-container-font-container-button-1'>Aa</button>
+              <button className='settings-container-font-container-button-2'>Aa</button>
+              <button className='settings-container-font-container-button-3'>Aa</button>
+            </div>
+          </section>
 
-        <hr />
+          <hr className='first-line' />
 
-        <section className='settings-container-color'>
-          <h3 className='settings-container-color-title'>
-            color
-          </h3>
-          <div className='settings-container-color-container'>
-            <button className='settings-container-color-container-button-1'>red</button>
-            <button className='settings-container-color-container-button-2'>aqua</button>
-            <button className='settings-container-color-container-button-3'>violet</button>
-          </div>
-        </section>
+          {/* Color Section */}
+          <section className='settings-container-color'>
+            <h3 className='settings-container-color-title'>
+              color
+            </h3>
+            <div className='settings-container-color-container'>
+              <button className='settings-container-color-container-button-1'>red</button>
+              <button className='settings-container-color-container-button-2'>aqua</button>
+              <button className='settings-container-color-container-button-3'>violet</button>
+            </div>
+          </section>
 
-        <button>apply</button>
+          <button>apply</button>
 
+        </div>
       </div>
-      
+
     </div>
   )
 }
