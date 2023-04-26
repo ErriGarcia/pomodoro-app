@@ -1,13 +1,12 @@
 import '../styles/App.scss'
-import logo from '../images/logo.svg'
+import Header from './Header'
+// import { useState } from 'react'
 
 
 function App() {
   return (
     <div className='main'>
-      <header className='main-header'>
-        <img className='main-header-logo' src={logo} alt="logo" />
-      </header>
+      <Header></Header>
 
       {/* Buttons */}
       <div className='main-container-buttons'>
@@ -19,6 +18,7 @@ function App() {
       {/* Circle */}
       <div className='circle'>
         <div className='circle-line-time'>
+          <p className='circle-line-time-pomodoro'></p>
           <button className='circle-line-time-button-start'>start</button>
         </div>
       </div>
@@ -57,14 +57,14 @@ function App() {
                 <label className='settings-container-time-form-container-label' htmlFor='pomodoro'>
                   pomodoro
                 </label>
-                <input className='settings-container-time-form-container-input' type='number' name='pomodoro' id='pomodoro' min='1' max='25' value='25' />
+                <input className='settings-container-time-form-container-input' type='text' name='pomodoro' id='pomodoro' min='1' max='25'/>
               </div>
 
               <div className='settings-container-time-form-container'>
                 <label className='settings-container-time-form-container-label' htmlFor='short-break'>
                   short break
                 </label>
-                <input className='settings-container-time-form-container-input' name='short-break' id='short-break' type='number' min='1' max='5' value='5' />
+                <input className='settings-container-time-form-container-input' name='short-break' id='short-break' type='text' min='1' max='5' />
               </div>
 
 
@@ -72,7 +72,7 @@ function App() {
                 <label className='settings-container-time-form-container-label' htmlFor='long-break'>
                   long break
                 </label>
-                <input className='settings-container-time-form-container-input' name='long-break' id='long-break' type='number' min='1' max='15' value='15' />
+                <input className='settings-container-time-form-container-input' name='long-break' id='long-break' type='text' min='1' max='15' />
               </div>
             </form>
           </section>
