@@ -5,8 +5,8 @@ import logo from '../images/logo.svg'
 function App() {
   return (
     <div className='main'>
-      <header>
-        <img className='main-logo' src={logo} alt="logo" />
+      <header className='main-header'>
+        <img className='main-header-logo' src={logo} alt="logo" />
       </header>
 
       {/* Buttons */}

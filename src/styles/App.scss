@@ -4,10 +4,14 @@
 @import './core/variables';
 
 .main {
-    height: 100vh;
+    height: 100%;
     padding: 32px 24px;
     background-color: $blue-color;
     @include displayFlex(column, center, center);
+
+    &-header {
+        margin-top: 48px;
+    }
 
     // {/* Buttons */}
     &-container-buttons {
@@ -19,6 +23,12 @@
         font: 12px $font-kumbh-sans;
         @include displayFlex(row, space-between, center);
         border-radius: 31.5px;
+
+        @include tablet {
+            min-width: 373px;
+            height: 63px;
+            font-size: 14px;
+        }
 
         &-button-1 {
             color: $blue-color;
@@ -39,6 +49,12 @@
         font-family: $font-kumbh-sans;
         color: $grey-color;
 
+        @include tablet {
+            min-width: 410px;
+            min-height: 410px;
+            margin-top: 110px;
+        }
+
         &-line-time {
             min-width: 248px;
             min-height: 248px;
@@ -46,9 +62,18 @@
             @include displayFlex(column, center, center);
             border: solid 10px $orange-color;
 
+            @include tablet {
+                min-width: 340px;
+                min-height: 340px;
+            }
+
             &-button-start {
                 letter-spacing: 13px;
                 text-transform: uppercase;
+
+                @include tablet {
+                    font-size: 16px;
+                }
             }
         }
 
@@ -58,6 +83,11 @@
     .settings-button {
         margin-top: 80px;
 
+        @include tablet {
+            margin-top: 140px;
+            margin-bottom: 68px;
+        }
+
     }
     .material-icons {
         font-size: 28px;
@@ -66,7 +96,7 @@
 
     // {/* Modal container */}
     .modal {
-        display: none;
+        // display: none;
         position: fixed;
         z-index: 1;
         left: 0;
@@ -88,6 +118,12 @@
             color: $dark-purple-color;
             border-radius: 15px;
 
+            @include tablet {
+                width: 540px;
+                height: 490px;
+                padding: 34px 24px 60px 24px;
+            }
+
             // {/* Header Section */}
             &-header {
                 @include displayFlex(row, space-between, center);
@@ -97,6 +133,10 @@
                 }
                 &-title {
                     font-size: 20px;
+
+                    @include tablet {
+                        font-size: 28px;
+                    }
                 }
 
                 &-button-close {
@@ -107,6 +147,10 @@
             .first-line {
                 margin-top: 28px;
                 border: 0.5px solid $line-color;
+
+                @include tablet {
+                    margin-top: 32px;
+                }
             }
         }
 
@@ -115,17 +159,34 @@
             margin: 24px 0 24px 0;
             @include displayFlex(column, center, center);
 
+            @include tablet {
+                align-items: flex-start;
+            }
+
             &-title {
                 @include titleSettings();
+
+                @include tablet {
+                    font-size: 13px;
+                    letter-spacing: 5px;
+                }
             }
 
             &-form {
                 margin-top: 10px;
                 width: 100%;
 
+                @include tablet {
+                    @include displayFlex(row, space-between, center)
+                }
+
                 &-container {
                     @include displayFlex(row, space-between, center);
                     margin-top: 8px;
+
+                    @include tablet {
+                        @include displayFlex(column, center, start)
+                    }
                     
                     &-label {
                         font-size: 12px;
@@ -139,6 +200,11 @@
                         border-radius: 10px;
                         padding-left: 16px;
                         font: 14px $font-kumbh-sans;
+
+                        @include tablet {
+                            margin-top: 10px;
+                            height: 48px;
+                        }
                     }
                 }
 
@@ -150,8 +216,17 @@
             margin: 24px 0 24px;
             @include displayFlex(column, center, center);
 
+            @include tablet {
+                @include displayFlex(row, space-between, center);
+            }
+
             &-title {
                 @include titleSettings();
+
+                @include tablet {
+                    font-size: 13px;
+                    letter-spacing: 5px;
+                }
             }
 
             &-container {
@@ -168,6 +243,10 @@
                     font: 15px $font-kumbh-sans;
                     color: $white-color;
                     background-color: $dark-purple-color;
+
+                    @include tablet {
+                        margin-top: 0;
+                    }
                 }
 
                 &-button-2, &-button-3 {
@@ -188,14 +267,27 @@
             margin: 24px 0 30px;
             @include displayFlex(column, center, center);
 
+            @include tablet {
+                @include displayFlex(row, space-between, center);
+            }
+
             &-title {
                 @include titleSettings();
+
+                @include tablet {
+                    font-size: 13px;
+                    letter-spacing: 5px;
+                }
             }
 
             &-container {
                 margin-top: 18px;
                 @include displayFlex(row, center, center);
                 gap: 16px;
+
+                @include tablet {
+                    margin-top: 0;
+                }
 
                 &-button-1, &-button-2, &-button-3 {
                     width: 40px;
@@ -233,6 +325,7 @@
 
         .settings-container-apply-container {
             @include displayFlex(column, center, center);
+
             &-button {
             border-radius: 26.5px;
             width: 140px;
@@ -240,6 +333,14 @@
             background-color: $orange-color;
             position: absolute;
             bottom: 40px;
+            color: $white-color;
+
+            @include tablet {
+                bottom: 78px;
+            }
+            }
+            &-button::first-letter {
+                text-transform: uppercase;
             }
         }
     }
