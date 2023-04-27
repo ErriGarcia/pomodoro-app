@@ -17,7 +17,7 @@
     &-container-buttons {
         min-width: 327px;
         margin-top: 45px;
-        padding: 8px 31px 8px 6px;
+        padding: 8px 6px 8px 6px;
         background-color: $dark-purple-color;
         color: $grey-color;
         font: 12px $font-kumbh-sans;
@@ -35,6 +35,11 @@
             background-color: $orange-color;
             padding: 18px 23px;
             border-radius: 26.5px;
+            width: 100px;
+        }
+
+        &-button-2, &-button-3 {
+            width: 100px;
         }
     }
 
@@ -354,7 +359,7 @@
     .active-button {
         color: #1E213F;
         background-color: #F87070;
-        padding: 18px 23px;
+        padding: 18px 12px;
         border-radius: 26.5px;
     }
     
@@ -379,5 +384,17 @@
     
     .inactive-color {
         display: none;
+    }
+
+    .kumbh-sans-font {
+        font: 11px $font-kumbh-sans;
+    }
+
+    .roboto-slab-font {
+        font: 11px $font-roboto-slab;
+    }
+
+    .space-mono-font {
+        font: 11px $font-space-mono;
     }
 }
