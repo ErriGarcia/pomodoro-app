@@ -1,36 +1,8 @@
-import { useState } from 'react'
-
-const SettingsColorSection = () => {
-
-    const [firstColor, setFirstColor] = useState(true)
-    const [secondColor, setSecondColor] = useState(false)
-    const [thirdColor, setThirdColor] = useState(false)
-
-    const handleClickFirstColor = () => {
-        setFirstColor(true)
-        setSecondColor(false)
-        setThirdColor(false)
-    }
-
-    const handleClickSecondColor = () => {
-        setSecondColor(true)
-        setFirstColor(false)
-        setThirdColor(false)
-    }
-
-    const handleClickThirdColor = () => {
-        setThirdColor(true)
-        setFirstColor(false)
-        setSecondColor(false)
-    }
-
-    let toggleFirstColor = firstColor ? 'active-color' : 'inactive-color'
-    let toggleSecondColor = secondColor ? 'active-color' : 'inactive-color'
-    let toggleThirdColor = thirdColor ? 'active-color' : 'inactive-color'
+const SettingsColorSection = ({updateFirstFont, updateSecondFont, updateThirdFont, handleClickFirstColor, handleClickSecondColor, handleClickThirdColor, toggleFirstColor, toggleSecondColor, toggleThirdColor}) => {
 
     return (
         <section className='settings-container-color'>
-            <h3 className='settings-container-color-title'>
+            <h3 className={`settings-container-color-title ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`}>
             color
             </h3>
             <div className='settings-container-color-container'>

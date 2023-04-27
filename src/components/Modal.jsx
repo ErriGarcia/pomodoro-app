@@ -3,16 +3,12 @@ import SettingsColorSection from './SettingsColorSection'
 import SettingsFontSection from './SettingsFontSection'
 import SettingsTimeSection from './SettingsTimeSection'
 
-const Modal = ({timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak}) => {
-    
+const Modal = ({timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, firstFont, secondFont, thirdFont, classFirstFont, classSecondFont, classThirdFont, handleClickFirstFont, handleClickSecondFont, handleClickThirdFont, updateFirstFont, updateSecondFont, updateThirdFont, handleClickFirstColor, handleClickSecondColor, handleClickThirdColor, toggleFirstColor, toggleSecondColor, toggleThirdColor, updateFirstColor, updateSecondColor, updateThirdColor, handleClickApply}) => {
+
     const [modal, setModal] = useState(false)
 
     const toggleModal = () => {
         setModal(!modal)
-    }
-
-    const handleClick = () => {
-        
     }
 
     return (
@@ -30,7 +26,7 @@ const Modal = ({timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro,
 
                     {/* Header Section */}
                     <section className='settings-container-header'>
-                        <h2 className='settings-container-header-title'>
+                        <h2 className={`settings-container-header-title ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`}>
                         settings
                         </h2>
                         <button className='settings-container-header-button-close'
@@ -50,21 +46,53 @@ const Modal = ({timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro,
                         handleTimePomodoro={handleTimePomodoro}
                         handleTimeShortBreak={handleTimeShortBreak}
                         handleTimeLongBreak={handleTimeLongBreak}
+
+                        updateFirstFont={updateFirstFont}
+                        updateSecondFont={updateSecondFont}
+                        updateThirdFont={updateThirdFont}
                     >
                     </SettingsTimeSection>
                     <hr className='first-line' />
 
                     {/* Font Section */}
-                    <SettingsFontSection></SettingsFontSection>
+                    <SettingsFontSection
+                        firstFont={firstFont}
+                        secondFont={secondFont}
+                        thirdFont={thirdFont}
+                        classFirstFont={classFirstFont}
+                        classSecondFont={classSecondFont}
+                        classThirdFont={classThirdFont}
+                        handleClickFirstFont={handleClickFirstFont}
+                        handleClickSecondFont={handleClickSecondFont}
+                        handleClickThirdFont={handleClickThirdFont}
+
+                        updateFirstFont={updateFirstFont}
+                        updateSecondFont={updateSecondFont}
+                        updateThirdFont={updateThirdFont}
+                    >
+                    </SettingsFontSection>
                     <hr className='first-line' />
 
                     {/* Color Section */}
-                    <SettingsColorSection></SettingsColorSection>
+                    <SettingsColorSection
+                        updateFirstFont={updateFirstFont}
+                        updateSecondFont={updateSecondFont}
+                        updateThirdFont={updateThirdFont}
+
+                        handleClickFirstColor={handleClickFirstColor}
+                        handleClickSecondColor={handleClickSecondColor}
+                        handleClickThirdColor={handleClickThirdColor}
+
+                        toggleFirstColor={toggleFirstColor}
+                        toggleSecondColor={toggleSecondColor}
+                        toggleThirdColor={toggleThirdColor}
+                    >
+                    </SettingsColorSection>
 
                     <div className='settings-container-apply-container'>
                         <button 
-                            className='settings-container-apply-container-button'
-                            onClick={handleClick}
+                            className={`settings-container-apply-container-button ${updateFirstFont} ${updateSecondFont} ${updateThirdFont} ${updateFirstColor} ${updateSecondColor} ${updateThirdColor}`}
+                            onClick={handleClickApply}
                         >
                             apply
                         </button>

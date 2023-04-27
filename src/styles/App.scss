@@ -209,7 +209,8 @@
                         background-color: $input-background-color;
                         border-radius: 10px;
                         padding-left: 16px;
-                        font: 14px $font-kumbh-sans;
+                        // font: 14px $font-kumbh-sans;
+                        font-size: 14px;
 
                         @include tablet {
                             margin-top: 10px;
@@ -340,7 +341,7 @@
             border-radius: 26.5px;
             width: 140px;
             height: 53px;
-            background-color: $orange-color;
+            // background-color: $orange-color;
             position: absolute;
             bottom: -24px;
             color: $white-color;
@@ -387,14 +388,26 @@
     }
 
     .kumbh-sans-font {
-        font: 11px $font-kumbh-sans;
+        font-family: $font-kumbh-sans;
     }
 
     .roboto-slab-font {
-        font: 11px $font-roboto-slab;
+        font-family: $font-roboto-slab;
     }
 
     .space-mono-font {
-        font: 11px $font-space-mono;
+        font-family: $font-space-mono;
+    }
+
+    .first-color-background {
+        background-color: $orange-color;
+    }
+
+    .second-color-background {
+        background-color: $aqua-color;
+    }
+
+    .third-color-background {
+        background-color: $pink-color;
     }
 }

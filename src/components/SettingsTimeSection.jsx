@@ -1,4 +1,4 @@
-const SettingsTimeSection = ({timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak}) => {
+const SettingsTimeSection = ({timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, updateFirstFont, updateSecondFont, updateThirdFont}) => {
 
     const handleInputTimePomodoro = (ev) => {
         handleTimePomodoro(ev.target.value)
@@ -14,16 +14,16 @@ const SettingsTimeSection = ({timePomodoro, timeShortBreak, timeLongBreak, handl
 
     return (
         <section className='settings-container-time'>
-            <h3 className='settings-container-time-title'>
+            <h3 className={`settings-container-time-title ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`}>
             time (minutes)
             </h3>
             <form className='settings-container-time-form'>
                 <div className='settings-container-time-form-container'>
-                    <label className='settings-container-time-form-container-label' htmlFor='pomodoro'>
+                    <label className={`settings-container-time-form-container-label ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`} htmlFor='pomodoro'>
                     pomodoro
                     </label>
                     <input 
-                        className='settings-container-time-form-container-input'
+                        className={`settings-container-time-form-container-input ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`}
                         type='number' 
                         name='pomodoro' 
                         id='pomodoro' 
@@ -33,11 +33,11 @@ const SettingsTimeSection = ({timePomodoro, timeShortBreak, timeLongBreak, handl
                 </div>
 
                 <div className='settings-container-time-form-container'>
-                    <label className='settings-container-time-form-container-label' htmlFor='short-break'>
+                    <label className={`settings-container-time-form-container-label ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`} htmlFor='short-break'>
                     short break
                     </label>
                     <input 
-                        className='settings-container-time-form-container-input' 
+                        className={`settings-container-time-form-container-input ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`} 
                         name='short-break' 
                         id='short-break' 
                         type='number'
@@ -48,11 +48,11 @@ const SettingsTimeSection = ({timePomodoro, timeShortBreak, timeLongBreak, handl
 
 
                 <div className='settings-container-time-form-container'>
-                    <label className='settings-container-time-form-container-label' htmlFor='long-break'>
+                    <label className={`settings-container-time-form-container-label ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`}  htmlFor='long-break'>
                     long break
                     </label>
                     <input 
-                        className='settings-container-time-form-container-input' 
+                        className={`settings-container-time-form-container-input ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`} 
                         name='long-break' 
                         id='long-break' 
                         type='number'
