@@ -4,10 +4,15 @@ import SettingsFontSection from './SettingsFontSection'
 import SettingsTimeSection from './SettingsTimeSection'
 
 const Modal = ({timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak}) => {
+    
     const [modal, setModal] = useState(false)
 
     const toggleModal = () => {
         setModal(!modal)
+    }
+
+    const handleClick = () => {
+        
     }
 
     return (
@@ -57,7 +62,10 @@ const Modal = ({timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro,
                     <SettingsColorSection></SettingsColorSection>
 
                     <div className='settings-container-apply-container'>
-                        <button className='settings-container-apply-container-button'>
+                        <button 
+                            className='settings-container-apply-container-button'
+                            onClick={handleClick}
+                        >
                             apply
                         </button>
                     </div>

@@ -246,8 +246,8 @@
                     padding: 12px 10px;
                     @include displayFlex(column, center, center);
                     font: 15px $font-kumbh-sans;
-                    color: $white-color;
-                    background-color: $dark-purple-color;
+                    // color: $white-color;
+                    // background-color: $dark-purple-color;
 
                     @include tablet {
                         margin-top: 0;
@@ -256,8 +256,8 @@
 
                 &-button-2, &-button-3 {
                     font-family: $font-roboto-slab;
-                    color: $dark-purple-color;
-                    background-color: $default-background-color;
+                    // color: $dark-purple-color;
+                    // background-color: $default-background-color;
                 }
 
                 &-button-3 {
@@ -303,27 +303,27 @@
                 &-button-1 {
                     background-color: $orange-color;
 
-                    .material-icons {
-                        color: $dark-purple-color;
-                    }
+                    // .material-icons {
+                    //     color: $dark-purple-color;
+                    // }
                 }
 
                 &-button-2 {
                     background-color: $aqua-color;
 
-                    .material-icons {
-                        display: none;
-                        // color: $dark-purple-color;
-                    }
+                    // .material-icons {
+                    //     display: none;
+                    //     // color: $dark-purple-color;
+                    // }
                 }
 
                 &-button-3 {
                     background-color: $pink-color;
 
-                    .material-icons {
-                        display: none;
-                        // color: $dark-purple-color;
-                    }
+                    // .material-icons {
+                    //     display: none;
+                    //     // color: $dark-purple-color;
+                    // }
                 }
             }
         }
@@ -348,5 +348,36 @@
                 text-transform: uppercase;
             }
         }
+    }
+
+    // {/* Active and Inactive State */}
+    .active-button {
+        color: #1E213F;
+        background-color: #F87070;
+        padding: 18px 23px;
+        border-radius: 26.5px;
+    }
+    
+    .inactive-button {
+        background-color: $dark-purple-color;
+        color: $grey-color;
+    }
+    
+    .active-font {
+        color: $white-color;
+        background-color: $dark-purple-color;
+    }
+    
+    .inactive-font {
+        color: $dark-purple-color;
+        background-color: $default-background-color;
+    }
+    
+    .active-color {
+        color: #161932;
+    }
+    
+    .inactive-color {
+        display: none;
     }
 }
