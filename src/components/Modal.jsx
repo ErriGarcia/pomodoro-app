@@ -3,7 +3,7 @@ import SettingsColorSection from './SettingsColorSection'
 import SettingsFontSection from './SettingsFontSection'
 import SettingsTimeSection from './SettingsTimeSection'
 
-const Modal = () => {
+const Modal = ({timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak}) => {
     const [modal, setModal] = useState(false)
 
     const toggleModal = () => {
@@ -38,7 +38,15 @@ const Modal = () => {
                     <hr className='first-line' />
 
                     {/* Time Section */}
-                    <SettingsTimeSection></SettingsTimeSection>
+                    <SettingsTimeSection
+                        timePomodoro={timePomodoro}
+                        timeShortBreak={timeShortBreak}
+                        timeLongBreak={timeLongBreak}
+                        handleTimePomodoro={handleTimePomodoro}
+                        handleTimeShortBreak={handleTimeShortBreak}
+                        handleTimeLongBreak={handleTimeLongBreak}
+                    >
+                    </SettingsTimeSection>
                     <hr className='first-line' />
 
                     {/* Font Section */}

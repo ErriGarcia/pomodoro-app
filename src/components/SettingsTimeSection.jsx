@@ -1,4 +1,17 @@
-const SettingsTimeSection = () => {
+const SettingsTimeSection = ({timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak}) => {
+
+    const handleInputTimePomodoro = (ev) => {
+        handleTimePomodoro(ev.target.value)
+    }
+
+    const handleInputTimeShortBreak = (ev) => {
+        handleTimeShortBreak(ev.target.value)
+    }
+
+    const handleInputTimeLongBreak = (ev) => {
+        handleTimeLongBreak(ev.target.value)
+    }
+
     return (
         <section className='settings-container-time'>
             <h3 className='settings-container-time-title'>
@@ -9,14 +22,28 @@ const SettingsTimeSection = () => {
                     <label className='settings-container-time-form-container-label' htmlFor='pomodoro'>
                     pomodoro
                     </label>
-                    <input className='settings-container-time-form-container-input' type='text' name='pomodoro' id='pomodoro' min='1' max='25'/>
+                    <input 
+                        className='settings-container-time-form-container-input'
+                        type='number' 
+                        name='pomodoro' 
+                        id='pomodoro' 
+                        value={timePomodoro}
+                        onChange={handleInputTimePomodoro}
+                    />
                 </div>
 
                 <div className='settings-container-time-form-container'>
                     <label className='settings-container-time-form-container-label' htmlFor='short-break'>
                     short break
                     </label>
-                    <input className='settings-container-time-form-container-input' name='short-break' id='short-break' type='text' min='1' max='5' />
+                    <input 
+                        className='settings-container-time-form-container-input' 
+                        name='short-break' 
+                        id='short-break' 
+                        type='number'
+                        value={timeShortBreak}
+                        onChange={handleInputTimeShortBreak}
+                    />
                 </div>
 
 
@@ -24,7 +51,14 @@ const SettingsTimeSection = () => {
                     <label className='settings-container-time-form-container-label' htmlFor='long-break'>
                     long break
                     </label>
-                    <input className='settings-container-time-form-container-input' name='long-break' id='long-break' type='text' min='1' max='15' />
+                    <input 
+                        className='settings-container-time-form-container-input' 
+                        name='long-break' 
+                        id='long-break' 
+                        type='number'
+                        value={timeLongBreak}
+                        onChange={handleInputTimeLongBreak}
+                    />
                 </div>
             </form>
         </section>
