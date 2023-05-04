@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 const Homepage = ({timePomodoro, timeShortBreak, timeLongBreak, updateFirstFont, updateSecondFont, updateThirdFont, updateFirstColor, updateSecondColor, updateThirdColor}) => {
 
@@ -7,163 +7,86 @@ const Homepage = ({timePomodoro, timeShortBreak, timeLongBreak, updateFirstFont,
     const [buttonStatePomodoro, setButtonStatePomodoro] = useState(true)
     const [buttonStateShortBreak, setButtonStateShortBreak] = useState(false)
     const [buttonStateLongBreak, setButtonStateLongBreak] = useState(false)
-    let interval;
+    const interval = useRef(0)
     const [textButton, setTextButton] = useState('start')
     
     const handleClickPomodoro = () => {
-        setMinutes(timePomodoro) // write this when click on button apply
+        resetCountDown(timePomodoro, 0)
+        // setMinutes(timePomodoro) // write this when click on button apply
         setButtonStatePomodoro(true)
         setButtonStateShortBreak(false)
         setButtonStateLongBreak(false)
+        setTextButton('start')
     }
 
     const handleClickShortBreak = () => {
-        setMinutes(timeShortBreak) // write this when click on button apply
-        setSeconds(5)
+        resetCountDown(timeShortBreak, 0)
+        // setMinutes(timeShortBreak) // write this when click on button apply
+        // setSeconds(0)
         setButtonStateShortBreak(true)
         setButtonStatePomodoro(false)
         setButtonStateLongBreak(false)
+        setTextButton('start')
     }
 
     const handleClickLongBreak = () => {
-        setMinutes(timeLongBreak) // write this when click on button apply
-        setSeconds(0)
+        resetCountDown(timeLongBreak, 0)
+        // setMinutes(timeLongBreak) // write this when click on button apply
+        // setSeconds(0)
         setButtonStateLongBreak(true)
         setButtonStatePomodoro(false)
         setButtonStateShortBreak(false)
+        setTextButton('start')
     }
 
     let toggleClassCheck = buttonStatePomodoro ? 'active-button' : 'inactive-button'
     let toggleClassCheckShortBreak = buttonStateShortBreak ? 'active-button' : 'inactive-button'
     let toggleClassCheckLongBreak = buttonStateLongBreak ? 'active-button' : 'inactive-button'
 
-    
-    // useEffect(() => {
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    //     interval = setInterval(() => {
-    //         setSeconds(seconds-1)
-    //         setTextButton('restart')
-
-    //         if (seconds === 0) {
-    //             setMinutes(minutes-1)
-    //             setSeconds(59)
-    //         }
-
-    //         // if (minutes === 0 && seconds === 0) {
-    //         //     console.log('minutes 0')
-    //         //     clearInterval(interval)
-    //         // }
-
-    //     }, 1000)
-        
-    //     if (minutes === 0 && seconds === 0) {
-    //         clearInterval(interval)
-    //         setTextButton('start')
-    //     }
-    //     return () => clearInterval(interval)
-    // },)
-
-    // if (minutes === 0) {
-    //     // clearInterval(setSeconds(0))
-    //     console.log('minutes and seconds to 0');
-    // }
-
     if (seconds < 0) {
-        setMinutes(minutes => minutes -1)
-        setSeconds(59)
-        console.log('da 0 a 59')
 
-        if (minutes === 0) {
-            clearInterval(setSeconds(0))
-            console.log('minutes 0')
+        if (minutes !== 0) {
+            setMinutes(minutes => minutes -1)
+            setSeconds(59)
         }
+
     }
 
-    const handleClickStartRestart = () => {
-        
-        if (textButton === 'start') {
-            setTextButton('restart')
-            setInterval(() => {
-                setSeconds(seconds => seconds -1)
-                console.log(seconds)
-                
+    const countDown = () => {
+        interval.current = setInterval(() => {
+            setSeconds(seconds => seconds -1)
             }, 1000)
-
-        }
-
-        if (textButton === 'restart') {
-            clearInterval(interval)
-            setMinutes(0)
-            setSeconds(0)
-        }
-
-
-        // secondsRef.current--;
-        // setSeconds(secondsRef.current)
-
-        // if (textButton === 'start') {
-        //     // setSeconds(59)
-        //     setTextButton('restart')
-
-        //     if (secondsRef.current === 0) {
-        //     console.log('seconds === 0')
-        //     setMinutes(minutesRef.current--)
-        //     setSeconds(59)
-        // }
-            
-        //     interval = setInterval(() => {
-        //         console.log('inside setInterval')
-        //         setSeconds(secondsRef.current--)
-
-        //     }, 1000)
-
-        //     console.log('outside setInterval')
-        //     setSeconds(secondsRef.current--) 
-        // }
-
-        // if (minutes === 0 && seconds === 0) {
-        //     clearInterval(interval)
-        //     setTextButton('start')
-        // }
-
-        // if (textButton === 'restart') {
-        //     setMinutes(0)
-        //     setSeconds(0)
-        //     setTextButton('start')
-        // }
     }
 
-    // function countDown() {
+    const resetCountDown = (minutes, seconds) => {
+        clearInterval(interval.current)
+        setMinutes(minutes)
+        setSeconds(seconds)
+    }
+    
 
-        // console.log(typeof seconds)
+    const handleStartRestartClick = () => {
+        if (textButton === 'start') {
+            countDown()
+            setTextButton('restart')
+        } 
+        if (textButton === 'restart') {
 
-        // // if (seconds === '0') {
+            if (buttonStatePomodoro) {
+                resetCountDown(timePomodoro, 0)
+            }
+
+            if (buttonStateShortBreak) {
+                resetCountDown(timeShortBreak, 0)
+            }
+
+            if (buttonStateLongBreak) {
+                resetCountDown(timeLongBreak, 0)
+            }
             
-        // //     setSeconds('60')
-        // // }
-
-        // if (seconds === 0) {
-        //     setMinutes(minutes--)
-        //     setSeconds(59)
-        //     console.log(seconds, 'seconds')
-        // }
-        
-
-        // if (minutes === 0) {
-        //     clearInterval(interval)
-        // }
-
-        // setSeconds(seconds--)
-
-    //     if (minutes < 0) {
-    //         clearInterval(interval)
-    //     } else {
-    //         setMinutes(minutes)
-    //         setSeconds(seconds)
-    //     }
-
-    //     console.log(minutes, seconds)
-    // }
+            setTextButton('start')
+        }
+    }
 
     return (
         <>
@@ -193,8 +116,9 @@ const Homepage = ({timePomodoro, timeShortBreak, timeLongBreak, updateFirstFont,
                     {minutes < 10 ? '0'+minutes : minutes}:{seconds < 10 ? '0'+seconds : seconds}
                 </div>
                 <button
-                    onClick={handleClickStartRestart}
-                    className={`circle-line-time-button-start ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`}>{textButton}</button>
+                    onClick={handleStartRestartClick}
+                    className={`circle-line-time-button-start ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`}>{textButton}
+                </button>
                 </div>
             </div>
         </>
