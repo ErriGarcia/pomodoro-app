@@ -55,29 +55,32 @@ function App() {
     /* ************************************************************* */
 
     // from here Font functions
-    const handleClickFirstFont = () => {
+    const handleClickFirstFont = (ev) => {
         setFirstFont(true)
         setSecondFont(false)
         setThirdFont(false)
-        setClassFirstFont('kumbh-sans-font')
+        // setClassFirstFont('kumbh-sans-font')
+        setClassFirstFont(ev.target.value)
         setClassSecondFont('')
         setClassThirdFont('')
     }
 
-    const handleClickSecondFont = () => {
+    const handleClickSecondFont = (ev) => {
         setSecondFont(true)
         setFirstFont(false)
         setThirdFont(false)
-        setClassSecondFont('roboto-slab-font')
+        // setClassSecondFont('roboto-slab-font')
+        setClassSecondFont(ev.target.value)
         setClassFirstFont('')
         setClassThirdFont('')
     }
 
-    const handleClickThirdFont = () => {
+    const handleClickThirdFont = (ev) => {
         setThirdFont(true)
         setFirstFont(false)
         setSecondFont(false)
-        setClassThirdFont('space-mono-font')
+        // setClassThirdFont('space-mono-font')
+        setClassThirdFont(ev.target.value)
         setClassFirstFont('')
         setClassSecondFont('')
     }
@@ -126,9 +129,7 @@ function App() {
     const updateThirdColor = classThirdColor ? 'third-color-background' : ''
     // end here Color functions
     
-    const handleClickApply = () => {
-      console.log('hola');
-    }
+    
   return (
     <div className='main'>
       <Header></Header>
@@ -136,6 +137,14 @@ function App() {
         timePomodoro={timePomodoro}
         timeShortBreak={timeShortBreak}
         timeLongBreak={timeLongBreak}
+
+        updateFirstFont={updateFirstFont}
+        updateSecondFont={updateSecondFont}
+        updateThirdFont={updateThirdFont}
+
+        updateFirstColor={updateFirstColor}
+        updateSecondColor={updateSecondColor}
+        updateThirdColor={updateThirdColor}
       >
       </Homepage>
       <Modal 
@@ -174,7 +183,6 @@ function App() {
         updateSecondColor={updateSecondColor}
         updateThirdColor={updateThirdColor}
 
-        handleClickApply={handleClickApply}
       >
       </Modal>
     </div>

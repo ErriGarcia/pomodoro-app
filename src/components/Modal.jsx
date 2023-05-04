@@ -3,12 +3,17 @@ import SettingsColorSection from './SettingsColorSection'
 import SettingsFontSection from './SettingsFontSection'
 import SettingsTimeSection from './SettingsTimeSection'
 
-const Modal = ({timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, firstFont, secondFont, thirdFont, classFirstFont, classSecondFont, classThirdFont, handleClickFirstFont, handleClickSecondFont, handleClickThirdFont, updateFirstFont, updateSecondFont, updateThirdFont, handleClickFirstColor, handleClickSecondColor, handleClickThirdColor, toggleFirstColor, toggleSecondColor, toggleThirdColor, updateFirstColor, updateSecondColor, updateThirdColor, handleClickApply}) => {
+const Modal = ({timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, firstFont, secondFont, thirdFont, classFirstFont, classSecondFont, classThirdFont, handleClickFirstFont, handleClickSecondFont, handleClickThirdFont, updateFirstFont, updateSecondFont, updateThirdFont, handleClickFirstColor, handleClickSecondColor, handleClickThirdColor, toggleFirstColor, toggleSecondColor, toggleThirdColor, updateFirstColor, updateSecondColor, updateThirdColor}) => {
 
     const [modal, setModal] = useState(false)
 
     const toggleModal = () => {
         setModal(!modal)
+    }
+
+    const handleClickApply = () => {
+        setModal(false)
+        
     }
 
     return (

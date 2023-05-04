@@ -15,18 +15,21 @@ const SettingsFontSection = ({firstFont, secondFont, thirdFont, handleClickFirst
                 <button 
                     className={`settings-container-font-container-button-1 ${toggleFirstFont}`}
                     onClick={handleClickFirstFont}
+                    value={'kumbh-sans-font'}
                 >
-                        Aa
+                    Aa
                     </button>
                 <button 
                     className={`settings-container-font-container-button-2 ${toggleSecondFont}`}
                     onClick={handleClickSecondFont}
+                    value={'roboto-slab-font'}
                 >
                     Aa
                 </button>
                 <button 
                     className={`settings-container-font-container-button-3 ${toggleThirdFont}`}
                     onClick={handleClickThirdFont}
+                    value='space-mono-font'
                 >
                     Aa
                 </button>
