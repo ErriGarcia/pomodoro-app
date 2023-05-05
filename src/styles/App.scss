@@ -38,7 +38,11 @@
             width: 100px;
         }
 
-        &-button-2, &-button-3 {
+        &-button-2 {
+            width: 110px;
+        }
+         
+        &-button-3 {
             width: 100px;
         }
     }
@@ -65,7 +69,12 @@
             min-height: 248px;
             @include circle();
             @include displayFlex(column, center, center);
-            border: solid 10px $orange-color;
+            // border: solid 10px $orange-color;
+            // background-color: conic-gradient(red 10%, transparent 100%);
+            background:
+                    radial-gradient(closest-side, $blue-color 95%, transparent 80% 100%),
+                    conic-gradient($orange-color 100%, $grey-color 0);
+
 
             @include tablet {
                 min-width: 340px;
