@@ -1,4 +1,4 @@
-const SettingsTimeSection = ({timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, updateFirstFont, updateSecondFont, updateThirdFont}) => {
+const SettingsTimeSection = ({handleClickApply, timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, updateFirstFont, updateSecondFont, updateThirdFont}) => {
 
     const handleInputTimePomodoro = (ev) => {
         handleTimePomodoro(ev.target.value)
@@ -26,7 +26,7 @@ const SettingsTimeSection = ({timePomodoro, timeShortBreak, timeLongBreak, handl
                         className={`settings-container-time-form-container-input ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`}
                         type='number' 
                         name='pomodoro' 
-                        id='pomodoro' 
+                        id='pomodoro'
                         value={timePomodoro}
                         onChange={handleInputTimePomodoro}
                     />

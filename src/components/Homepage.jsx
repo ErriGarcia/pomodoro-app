@@ -23,7 +23,7 @@ const Homepage = ({updateFirstFont, updateSecondFont, updateThirdFont, toggleCla
                 </button>
             </div>
             <div className='circle'>
-                <div className='circle-line-time' id='enrica'>
+                <div className='circle-line-time' id='timer'>
                     <div className={`circle-line-time-pomodoro ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`}>
                         {minutes < 10 ? '0'+minutes : minutes}:{seconds < 10 ? '0'+seconds : seconds}
                     </div>

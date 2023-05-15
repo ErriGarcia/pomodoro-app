@@ -1,20 +1,19 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import SettingsColorSection from './SettingsColorSection'
 import SettingsFontSection from './SettingsFontSection'
 import SettingsTimeSection from './SettingsTimeSection'
 
-const Modal = ({timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, firstFont, secondFont, thirdFont, classFirstFont, classSecondFont, classThirdFont, handleClickFirstFont, handleClickSecondFont, handleClickThirdFont, updateFirstFont, updateSecondFont, updateThirdFont, handleClickFirstColor, handleClickSecondColor, handleClickThirdColor, toggleFirstColor, toggleSecondColor, toggleThirdColor, updateFirstColor, updateSecondColor, updateThirdColor}) => {
+const Modal = ({modal, toggleModal, handleClickApply, timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, firstFont, secondFont, thirdFont, classFirstFont, classSecondFont, classThirdFont, handleClickFirstFont, handleClickSecondFont, handleClickThirdFont, updateFirstFont, updateSecondFont, updateThirdFont, handleClickFirstColor, handleClickSecondColor, handleClickThirdColor, toggleFirstColor, toggleSecondColor, toggleThirdColor, updateFirstColor, updateSecondColor, updateThirdColor, setMinutes}) => {
 
-    const [modal, setModal] = useState(false)
+    // const [modal, setModal] = useState(false)
 
-    const toggleModal = () => {
-        setModal(!modal)
-    }
+    // const toggleModal = () => {
+    //     setModal(!modal)
+    // }
 
-    const handleClickApply = () => {
-        setModal(false)
-        
-    }
+    // const handleClickApply = (ev) => {
+    //     setModal(false)
+    // }
 
     return (
         <>
@@ -45,6 +44,7 @@ const Modal = ({timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro,
 
                     {/* Time Section */}
                     <SettingsTimeSection
+                        handleClickApply={handleClickApply}
                         timePomodoro={timePomodoro}
                         timeShortBreak={timeShortBreak}
                         timeLongBreak={timeLongBreak}

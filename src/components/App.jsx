@@ -6,6 +6,18 @@ import { useRef, useState } from 'react'
 
 
 function App() {
+
+    // from here **************************** ----> SETTINGS SECTION <---- **************************** //
+    const [modal, setModal] = useState(false)
+
+    const toggleModal = () => {
+        setModal(!modal)
+    }
+
+    const handleClickApply = () => {
+        setModal(false)
+    }
+
     // from here **************************** ----> TIME SECTION <---- **************************** //
 
     /* variables from the form/modal */
@@ -32,14 +44,22 @@ function App() {
     /* handleTime functions to change time based on the form/modal */
     const handleTimePomodoro = (value) => {
         setTimePomodoro(value)
+        resetCountDown(value, 0)
+        // setMinutes(timePomodoro) // write this when click on button apply
+        // setButtonStatePomodoro(true)
+        // setButtonStateShortBreak(!true)
+        // setButtonStateLongBreak(!true)
+        // setTextButton('start')
     }
 
     const handleTimeShortBreak = (value) => {
         setTimeShortBreak(value)
+        resetCountDown(value, 0)
     }
 
     const handleTimeLongBreak = (value) => {
         setTimeLongBreak(value)
+        resetCountDown(value, 0)
     }
 
     // -------------------- //
@@ -49,18 +69,18 @@ function App() {
         resetCountDown(timePomodoro, 0)
         // setMinutes(timePomodoro) // write this when click on button apply
         setButtonStatePomodoro(true)
-        setButtonStateShortBreak(false)
-        setButtonStateLongBreak(false)
+        setButtonStateShortBreak(!true)
+        setButtonStateLongBreak(!true)
         setTextButton('start')
     }
 
     const handleClickShortBreak = () => {
         resetCountDown(timeShortBreak, 0)
         // setMinutes(timeShortBreak) // write this when click on button apply
-        // setSeconds(0)
+        setSeconds(0)
         setButtonStateShortBreak(true)
-        setButtonStatePomodoro(false)
-        setButtonStateLongBreak(false)
+        setButtonStatePomodoro(!true)
+        setButtonStateLongBreak(!true)
         setTextButton('start')
     }
 
@@ -69,8 +89,8 @@ function App() {
         // setMinutes(timeLongBreak) // write this when click on button apply
         // setSeconds(0)
         setButtonStateLongBreak(true)
-        setButtonStatePomodoro(false)
-        setButtonStateShortBreak(false)
+        setButtonStatePomodoro(!true)
+        setButtonStateShortBreak(!true)
         setTextButton('start')
     }
 
@@ -92,7 +112,6 @@ function App() {
 
     let startingPoint = 100
     let totalSeconds = minutes * 60
-    console.log(minutes)
 
     // coefficente che sottraggo al 100% per sincronizzare il tempo con la progress bar
     let nameToChange = 100 / totalSeconds
@@ -100,15 +119,20 @@ function App() {
     const orangeColor = '#F87070'
     const blueColor = '#1E213F'
     const greyColor = '#D7E0FF'
+    const aquaColor = '##70F3F8'
 
-    const changePercentBackground = () => {
-        document.getElementById('enrica').style.background = `radial-gradient(closest-side, ${blueColor} 95%, transparent 80% 100%), conic-gradient(${orangeColor} ${startingPoint -= nameToChange}%, ${greyColor} 0)`
+    const changePercentBackground = (color) => {
+        document.getElementById('timer').style.background = `radial-gradient(closest-side, ${blueColor} 95%, transparent 80% 100%), conic-gradient(${color} ${startingPoint -= nameToChange}%, ${greyColor} 0)`
+    }
+
+    const setPercentBackground100 = (color) => {
+        document.getElementById('timer').style.background = `radial-gradient(closest-side, ${blueColor} 95%, transparent 80% 100%), conic-gradient(${color} 100%, ${greyColor} 0)`
     }
     
     const countDown = () => {
         interval.current = setInterval(() => {
             setSeconds(seconds => seconds -1)
-            changePercentBackground()
+            changePercentBackground(orangeColor)
         }, 1000)
     }
 
@@ -121,14 +145,23 @@ function App() {
         clearInterval(interval.current)
         setMinutes(minutes)
         setSeconds(seconds)
+        setPercentBackground100(orangeColor)
     }
-    
+
+
+    /*
+        Condition to stop the timer when minutes and seconds reach 0
+    */
+    if (minutes <= 0 && seconds <= 0) {
+        clearInterval(interval.current)
+    }
 
     const handleStartRestartClick = () => {
         if (textButton === 'start') {
             countDown()
             setTextButton('restart')
-        } 
+        }
+
         if (textButton === 'restart') {
 
             if (buttonStatePomodoro) {
@@ -280,7 +313,10 @@ function App() {
         updateThirdColor={updateThirdColor}
       >
       </Homepage>
-      <Modal 
+      <Modal
+        modal={modal}
+        toggleModal={toggleModal}
+        handleClickApply={handleClickApply}
         timePomodoro={timePomodoro}
         timeShortBreak={timeShortBreak}
         timeLongBreak={timeLongBreak}
@@ -316,6 +352,8 @@ function App() {
         updateFirstColor={updateFirstColor}
         updateSecondColor={updateSecondColor}
         updateThirdColor={updateThirdColor}
+
+        setMinutes={setMinutes}
       >
       </Modal>
     </div>
