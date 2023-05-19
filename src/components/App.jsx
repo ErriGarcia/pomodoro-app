@@ -9,13 +9,56 @@ function App() {
 
     // from here **************************** ----> SETTINGS SECTION <---- **************************** //
     const [modal, setModal] = useState(false)
+    const minValue = 1
+    const maxValue = 60
 
     const toggleModal = () => {
         setModal(!modal)
     }
 
     const handleClickApply = () => {
-        setModal(false)
+        validateData()
+        const activeTabName = getCurrentActiveTabName()
+        changeActiveTabNameValue(activeTabName)
+    }
+
+    const validateData = () => {
+        if (timePomodoro > maxValue || timePomodoro < minValue || timeShortBreak > maxValue || timeShortBreak < minValue || timeLongBreak > maxValue || timeLongBreak < minValue) {
+            console.log('error')
+            setModal(true)
+        } else {
+            setModal(false)
+        }
+    }
+
+    /**
+     * TODO: too generic, find a more specific way to isolate the active element
+     */
+    const getCurrentActiveTabName = () => {
+        const activeClassButton = 'active-button'
+        const buttonsContainer = document.getElementsByClassName(activeClassButton)[0].innerHTML
+        return buttonsContainer
+    }
+
+    /**
+     * TODO: find a way to add new element automatically
+     * @param {*} name string
+     */
+    const changeActiveTabNameValue = (name) => {
+        switch (name) {
+            case 'pomodoro':
+                changeCountDownValue(timePomodoro, 0)
+                break;
+            case 'short break':
+                changeCountDownValue(timeShortBreak, 0)
+                break;
+            case 'long break':
+                changeCountDownValue(timeLongBreak, 0)
+                break;
+            default:
+                console.error(`value ${name} not found`)
+                break;
+        }
     }
 
     // from here **************************** ----> TIME SECTION <---- **************************** //
@@ -44,29 +87,21 @@ function App() {
     /* handleTime functions to change time based on the form/modal */
     const handleTimePomodoro = (value) => {
         setTimePomodoro(value)
-        resetCountDown(value, 0)
-        // setMinutes(timePomodoro) // write this when click on button apply
-        // setButtonStatePomodoro(true)
-        // setButtonStateShortBreak(!true)
-        // setButtonStateLongBreak(!true)
-        // setTextButton('start')
     }
 
     const handleTimeShortBreak = (value) => {
         setTimeShortBreak(value)
-        resetCountDown(value, 0)
     }
 
     const handleTimeLongBreak = (value) => {
         setTimeLongBreak(value)
-        resetCountDown(value, 0)
     }
 
     // -------------------- //
     
     /* handleClick to change color buttons when clicked and to manage reset button */
     const handleClickPomodoro = () => {
-        resetCountDown(timePomodoro, 0)
+        changeCountDownValue(timePomodoro, 0)
         // setMinutes(timePomodoro) // write this when click on button apply
         setButtonStatePomodoro(true)
         setButtonStateShortBreak(!true)
@@ -75,7 +110,7 @@ function App() {
     }
 
     const handleClickShortBreak = () => {
-        resetCountDown(timeShortBreak, 0)
+        changeCountDownValue(timeShortBreak, 0)
         // setMinutes(timeShortBreak) // write this when click on button apply
         setSeconds(0)
         setButtonStateShortBreak(true)
@@ -85,7 +120,7 @@ function App() {
     }
 
     const handleClickLongBreak = () => {
-        resetCountDown(timeLongBreak, 0)
+        changeCountDownValue(timeLongBreak, 0)
         // setMinutes(timeLongBreak) // write this when click on button apply
         // setSeconds(0)
         setButtonStateLongBreak(true)
@@ -137,11 +172,11 @@ function App() {
     }
 
     /* 
-    function resetCountDown
+    function changeCountDownValue
     @param (minutes) reset the countDown minutes
     @param (seconds) reset the countDown seconds
     */
-    const resetCountDown = (minutes, seconds) => {
+    const changeCountDownValue = (minutes, seconds) => {
         clearInterval(interval.current)
         setMinutes(minutes)
         setSeconds(seconds)
@@ -165,15 +200,15 @@ function App() {
         if (textButton === 'restart') {
 
             if (buttonStatePomodoro) {
-                resetCountDown(timePomodoro, 0)
+                changeCountDownValue(timePomodoro, 0)
             }
 
             if (buttonStateShortBreak) {
-                resetCountDown(timeShortBreak, 0)
+                changeCountDownValue(timeShortBreak, 0)
             }
 
             if (buttonStateLongBreak) {
-                resetCountDown(timeLongBreak, 0)
+                changeCountDownValue(timeLongBreak, 0)
             }
             
             setTextButton('start')
@@ -315,6 +350,8 @@ function App() {
       </Homepage>
       <Modal
         modal={modal}
+        maxValue={maxValue}
+        minValue={minValue}
         toggleModal={toggleModal}
         handleClickApply={handleClickApply}
         timePomodoro={timePomodoro}

@@ -3,7 +3,7 @@ import SettingsColorSection from './SettingsColorSection'
 import SettingsFontSection from './SettingsFontSection'
 import SettingsTimeSection from './SettingsTimeSection'
 
-const Modal = ({modal, toggleModal, handleClickApply, timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, firstFont, secondFont, thirdFont, classFirstFont, classSecondFont, classThirdFont, handleClickFirstFont, handleClickSecondFont, handleClickThirdFont, updateFirstFont, updateSecondFont, updateThirdFont, handleClickFirstColor, handleClickSecondColor, handleClickThirdColor, toggleFirstColor, toggleSecondColor, toggleThirdColor, updateFirstColor, updateSecondColor, updateThirdColor, setMinutes}) => {
+const Modal = ({modal, maxValue, minValue, toggleModal, handleClickApply, timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, firstFont, secondFont, thirdFont, classFirstFont, classSecondFont, classThirdFont, handleClickFirstFont, handleClickSecondFont, handleClickThirdFont, updateFirstFont, updateSecondFont, updateThirdFont, handleClickFirstColor, handleClickSecondColor, handleClickThirdColor, toggleFirstColor, toggleSecondColor, toggleThirdColor, updateFirstColor, updateSecondColor, updateThirdColor, setMinutes}) => {
 
     // const [modal, setModal] = useState(false)
 
@@ -26,7 +26,7 @@ const Modal = ({modal, toggleModal, handleClickApply, timePomodoro, timeShortBre
 
         {modal && (
             <div className='modal'>
-                <div className='settings-container'>
+                <form className='settings-container'>
 
                     {/* Header Section */}
                     <section className='settings-container-header'>
@@ -44,6 +44,8 @@ const Modal = ({modal, toggleModal, handleClickApply, timePomodoro, timeShortBre
 
                     {/* Time Section */}
                     <SettingsTimeSection
+                        maxValue={maxValue}
+                        minValue={minValue}
                         handleClickApply={handleClickApply}
                         timePomodoro={timePomodoro}
                         timeShortBreak={timeShortBreak}
@@ -103,7 +105,7 @@ const Modal = ({modal, toggleModal, handleClickApply, timePomodoro, timeShortBre
                         </button>
                     </div>
 
-                </div>
+                </form>
             </div>
         )}
       </>

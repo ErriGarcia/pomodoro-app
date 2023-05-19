@@ -1,4 +1,4 @@
-const SettingsTimeSection = ({handleClickApply, timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, updateFirstFont, updateSecondFont, updateThirdFont}) => {
+const SettingsTimeSection = ({maxValue, minValue, timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, updateFirstFont, updateSecondFont, updateThirdFont}) => {
 
     const handleInputTimePomodoro = (ev) => {
         handleTimePomodoro(ev.target.value)
@@ -12,12 +12,14 @@ const SettingsTimeSection = ({handleClickApply, timePomodoro, timeShortBreak, ti
         handleTimeLongBreak(ev.target.value)
     }
 
+    // {timePomodoro > maxValue ? maxValue : timePomodoro < minValue ? minValue : timePomodoro}
+
     return (
         <section className='settings-container-time'>
             <h3 className={`settings-container-time-title ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`}>
             time (minutes)
             </h3>
-            <form className='settings-container-time-form'>
+            <fieldset className='settings-container-time-form'>
                 <div className='settings-container-time-form-container'>
                     <label className={`settings-container-time-form-container-label ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`} htmlFor='pomodoro'>
                     pomodoro
@@ -28,6 +30,8 @@ const SettingsTimeSection = ({handleClickApply, timePomodoro, timeShortBreak, ti
                         name='pomodoro' 
                         id='pomodoro'
                         value={timePomodoro}
+                        min={minValue}
+                        max={maxValue}
                         onChange={handleInputTimePomodoro}
                     />
                 </div>
@@ -41,6 +45,8 @@ const SettingsTimeSection = ({handleClickApply, timePomodoro, timeShortBreak, ti
                         name='short-break' 
                         id='short-break' 
                         type='number'
+                        min={minValue}
+                        max={maxValue}
                         value={timeShortBreak}
                         onChange={handleInputTimeShortBreak}
                     />
@@ -56,11 +62,13 @@ const SettingsTimeSection = ({handleClickApply, timePomodoro, timeShortBreak, ti
                         name='long-break' 
                         id='long-break' 
                         type='number'
+                        min={minValue}
+                        max={maxValue}
                         value={timeLongBreak}
                         onChange={handleInputTimeLongBreak}
                     />
                 </div>
-            </form>
+            </fieldset>
         </section>
     )
 }

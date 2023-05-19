@@ -7,7 +7,7 @@ const SettingsFontSection = ({firstFont, secondFont, thirdFont, handleClickFirst
     
     
     return (
-        <section className='settings-container-font'>
+        <fieldset className='settings-container-font'>
             <h3 className={`settings-container-font-title ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`}>
             Font
             </h3>
@@ -18,7 +18,7 @@ const SettingsFontSection = ({firstFont, secondFont, thirdFont, handleClickFirst
                     value={'kumbh-sans-font'}
                 >
                     Aa
-                    </button>
+                </button>
                 <button 
                     className={`settings-container-font-container-button-2 ${toggleSecondFont}`}
                     onClick={handleClickSecondFont}
@@ -34,7 +34,7 @@ const SettingsFontSection = ({firstFont, secondFont, thirdFont, handleClickFirst
                     Aa
                 </button>
             </div>
-        </section>
+        </fieldset>
     )
 }
 
