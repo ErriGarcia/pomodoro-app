@@ -3,7 +3,7 @@ import SettingsColorSection from './SettingsColorSection'
 import SettingsFontSection from './SettingsFontSection'
 import SettingsTimeSection from './SettingsTimeSection'
 
-const Modal = ({modal, maxValue, minValue, toggleModal, handleClickApply, timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, firstFont, secondFont, thirdFont, classFirstFont, classSecondFont, classThirdFont, handleClickFirstFont, handleClickSecondFont, handleClickThirdFont, updateFirstFont, updateSecondFont, updateThirdFont, handleClickFirstColor, handleClickSecondColor, handleClickThirdColor, toggleFirstColor, toggleSecondColor, toggleThirdColor, updateFirstColor, updateSecondColor, updateThirdColor, setMinutes}) => {
+const Modal = ({modal, maxValue, minValue, toggleModal, handleClickApply, timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, firstFont, secondFont, thirdFont, classFirstFont, classSecondFont, classThirdFont, handleClickFirstFont, handleClickSecondFont, handleClickThirdFont, updateFirstFont, updateSecondFont, updateThirdFont, handleClickFirstColor, handleClickSecondColor, handleClickThirdColor, toggleFirstColor, toggleSecondColor, toggleThirdColor, updateFirstColor, updateSecondColor, updateThirdColor}) => {
 
     // const [modal, setModal] = useState(false)
 
@@ -14,6 +14,10 @@ const Modal = ({modal, maxValue, minValue, toggleModal, handleClickApply, timePo
     // const handleClickApply = (ev) => {
     //     setModal(false)
     // }
+
+    const handleSubmit = (ev) => {
+        ev.preventDefault()
+    }
 
     return (
         <>
@@ -26,7 +30,7 @@ const Modal = ({modal, maxValue, minValue, toggleModal, handleClickApply, timePo
 
         {modal && (
             <div className='modal'>
-                <form className='settings-container'>
+                <form className='settings-container' onSubmit={handleSubmit}>
 
                     {/* Header Section */}
                     <section className='settings-container-header'>
