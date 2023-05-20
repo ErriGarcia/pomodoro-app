@@ -17,38 +17,24 @@ function App() {
     }
 
     const handleClickApply = () => {
-        // if (!validatePomodoroData() || !validateShortBreakData() || !validateLongBreakData()) {
-        //     setModal(true)
-        //     return
-        // }
-        const activeTabName = getCurrentActiveTabName()
-        if (timePomodoro > maxValue) {
-            setModal(true)
-        } else if (timePomodoro < minValue) {
-            setModal(true)
-        } else if (timeShortBreak > maxValue) {
-            setModal(true)
-        } else if (timeShortBreak < minValue) {
-            setModal(true)
-        } else if (timeLongBreak > maxValue) {
-            setModal(true)
-        } else if (timeLongBreak < minValue) {
-            setModal(true)
-        } else {
-            setModal(false)
-            changeActiveTabNameValue(activeTabName)
+        const isValid = validateData()
+        if (!isValid) {
+            console.log('invalid')
+            return
         }
-        
+        const activeTabName = getCurrentActiveTabName()
+        changeActiveTabNameValue(activeTabName)
+        setModal(false)
     }
 
-    // const validateData = () => {
-    //     if (timePomodoro > maxValue || timePomodoro < minValue || timeShortBreak > maxValue || timeShortBreak < minValue || timeLongBreak > maxValue || timeLongBreak < minValue) {
-    //         console.log('error')
-    //         setModal(true)
-    //     } else {
-    //         setModal(false)
-    //     }
-    // }
+    const validateData = () => {
+        if (timePomodoro > maxValue || timePomodoro < minValue || timeShortBreak > maxValue || timeShortBreak < minValue || timeLongBreak > maxValue || timeLongBreak < minValue) {
+            console.log('error')
+            return false
+        } else {
+            return true
+        }
+    }
 
     /**
      * TODO: too generic, find a more specific way to isolate the active element
@@ -64,52 +50,19 @@ function App() {
      * @param {*} name string
      */
     const changeActiveTabNameValue = (name) => {
-        if (timePomodoro < maxValue && timePomodoro > minValue) {
-            console.log('changeActiveTabNameValue')
-            switch (name) {
-                case 'pomodoro':
-                    changeCountDownValue(timePomodoro, 0)
-                    break;
-                case 'short break':
-                    changeCountDownValue(timeShortBreak, 0)
-                    break;
-                case 'long break':
-                    changeCountDownValue(timeLongBreak, 0)
-                    break;
-                default:
-                    console.error(`value ${name} not found`)
-                    break;
-            }
-        } else if (timeShortBreak < maxValue && timeShortBreak > minValue) {
-            switch (name) {
-                case 'pomodoro':
-                    changeCountDownValue(timePomodoro, 0)
-                    break;
-                case 'short break':
-                    changeCountDownValue(timeShortBreak, 0)
-                    break;
-                case 'long break':
-                    changeCountDownValue(timeLongBreak, 0)
-                    break;
-                default:
-                    console.error(`value ${name} not found`)
-                    break;
-            }
-        } else if (timeLongBreak < maxValue && timeLongBreak > minValue) {
-            switch (name) {
-                case 'pomodoro':
-                    changeCountDownValue(timePomodoro, 0)
-                    break;
-                case 'short break':
-                    changeCountDownValue(timeShortBreak, 0)
-                    break;
-                case 'long break':
-                    changeCountDownValue(timeLongBreak, 0)
-                    break;
-                default:
-                    console.error(`value ${name} not found`)
-                    break;
-            }
+        switch (name) {
+            case 'pomodoro':
+                changeCountDownValue(timePomodoro, 0)
+                break;
+            case 'short break':
+                changeCountDownValue(timeShortBreak, 0)
+                break;
+            case 'long break':
+                changeCountDownValue(timeLongBreak, 0)
+                break;
+            default:
+                console.error(`value ${name} not found`)
+                break;
         }
     }
 
@@ -153,12 +106,12 @@ function App() {
     
     /* handleClick to change color buttons when clicked and to manage reset button */
     const handleClickPomodoro = () => {
-        if (timePomodoro < maxValue && timePomodoro > minValue) {
-            changeCountDownValue(timePomodoro, 0)
-        } else {
-            changeCountDownValue(25, 0)
+        const isValid = validateData()
+        if (!isValid) {
+            return
         }
-        // changeCountDownValue(timePomodoro, 0)
+        changeCountDownValue(timePomodoro, 0)
+        // setMinutes(timePomodoro) // write this when click on button apply
         setButtonStatePomodoro(true)
         setButtonStateShortBreak(!true)
         setButtonStateLongBreak(!true)
@@ -166,12 +119,9 @@ function App() {
     }
 
     const handleClickShortBreak = () => {
-        if (timeShortBreak < maxValue && timeShortBreak > minValue) {
-            changeCountDownValue(timeShortBreak, 0)
-        } else {
-            changeCountDownValue(5, 0)
-        }
-        // changeCountDownValue(timeShortBreak, 0)
+        changeCountDownValue(timeShortBreak, 0)
+        // setMinutes(timeShortBreak) // write this when click on button apply
+        setSeconds(0)
         setButtonStateShortBreak(true)
         setButtonStatePomodoro(!true)
         setButtonStateLongBreak(!true)
@@ -179,12 +129,9 @@ function App() {
     }
 
     const handleClickLongBreak = () => {
-        if (timeShortBreak < maxValue && timeShortBreak > minValue) {
-            changeCountDownValue(timeLongBreak, 0)
-        } else {
-            changeCountDownValue(15, 0)
-        }
-        // changeCountDownValue(timeLongBreak, 0)
+        changeCountDownValue(timeLongBreak, 0)
+        // setMinutes(timeLongBreak) // write this when click on button apply
+        // setSeconds(0)
         setButtonStateLongBreak(true)
         setButtonStatePomodoro(!true)
         setButtonStateShortBreak(!true)
@@ -200,12 +147,11 @@ function App() {
 
     // -------------------- //
 
-    /**
-     * Set seconds to 59 and start countdown
-     */
-    if (seconds < 0 && minutes !== 0) {
-        setMinutes(minutes => minutes -1)
-        setSeconds(59)
+    if (seconds < 0) {
+        if (minutes !== 0) {
+            setMinutes(minutes => minutes -1)
+            setSeconds(59)
+        }
     }
 
     let startingPoint = 100
