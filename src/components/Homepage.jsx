@@ -1,4 +1,4 @@
-const Homepage = ({updateFirstFont, updateSecondFont, updateThirdFont, toggleClassCheck, toggleClassCheckShortBreak, toggleClassCheckLongBreak, handleClickPomodoro, handleClickShortBreak, handleClickLongBreak, minutes, seconds, handleStartRestartClick, textButton}) => {
+const Homepage = ({pomodoroRounds, updateFirstFont, updateSecondFont, updateThirdFont, toggleClassCheck, toggleClassCheckShortBreak, toggleClassCheckLongBreak, handleClickPomodoro, handleClickShortBreak, handleClickLongBreak, minutes, seconds, handleStartRestartClick, textButton}) => {
 
     return (
         <>
@@ -33,6 +33,7 @@ const Homepage = ({updateFirstFont, updateSecondFont, updateThirdFont, toggleCla
                     </button>
                 </div>
             </div>
+            <div className={`main-pomodoro-rounds ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`}># {pomodoroRounds}</div>
         </>
     )
 }

@@ -103,6 +103,7 @@ const Modal = ({modal, maxValue, minValue, toggleModal, handleClickApply, timePo
                     <div className='settings-container-apply-container'>
                         <button 
                             className={`settings-container-apply-container-button ${updateFirstFont} ${updateSecondFont} ${updateThirdFont} ${updateFirstColor} ${updateSecondColor} ${updateThirdColor}`}
+                            type='submit'
                             onClick={handleClickApply}
                         >
                             apply

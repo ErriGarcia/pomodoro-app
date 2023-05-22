@@ -2,7 +2,7 @@ import '../styles/App.scss'
 import Homepage from './Homepage'
 import Header from './Header'
 import Modal from './Modal'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 
 function App() {
@@ -16,7 +16,9 @@ function App() {
         setModal(!modal)
     }
 
-    const handleClickApply = () => {
+    const handleClickApply = (e) => {
+        e.preventDefault()
+        console.log('entrooooo')
         const isValid = validateData()
         if (!isValid) {
             console.log('invalid')
@@ -25,6 +27,10 @@ function App() {
         const activeTabName = getCurrentActiveTabName()
         changeActiveTabNameValue(activeTabName)
         setModal(false)
+    }
+
+    const handleKeyDown = (e) => {
+        console.log(e)
     }
 
     const validateData = () => {
@@ -111,7 +117,6 @@ function App() {
             return
         }
         changeCountDownValue(timePomodoro, 0)
-        // setMinutes(timePomodoro) // write this when click on button apply
         setButtonStatePomodoro(true)
         setButtonStateShortBreak(!true)
         setButtonStateLongBreak(!true)
@@ -120,8 +125,6 @@ function App() {
 
     const handleClickShortBreak = () => {
         changeCountDownValue(timeShortBreak, 0)
-        // setMinutes(timeShortBreak) // write this when click on button apply
-        setSeconds(0)
         setButtonStateShortBreak(true)
         setButtonStatePomodoro(!true)
         setButtonStateLongBreak(!true)
@@ -130,8 +133,6 @@ function App() {
 
     const handleClickLongBreak = () => {
         changeCountDownValue(timeLongBreak, 0)
-        // setMinutes(timeLongBreak) // write this when click on button apply
-        // setSeconds(0)
         setButtonStateLongBreak(true)
         setButtonStatePomodoro(!true)
         setButtonStateShortBreak(!true)
@@ -147,11 +148,9 @@ function App() {
 
     // -------------------- //
 
-    if (seconds < 0) {
-        if (minutes !== 0) {
-            setMinutes(minutes => minutes -1)
-            setSeconds(59)
-        }
+    if (seconds < 0 && minutes !== 0) {
+        setMinutes(minutes => minutes -1)
+        setSeconds(59)
     }
 
     let startingPoint = 100
@@ -192,12 +191,36 @@ function App() {
         setPercentBackground100(orangeColor)
     }
 
+    const [pomodoroRounds, setPomodoroRounds] = useState(1)
+
+    const increasePomodoroRounds = () => {
+        setPomodoroRounds(pomodoroRounds => pomodoroRounds + 1)
+    }
+
+    const resetPomodoroRounds = () => {
+        setPomodoroRounds(1)
+    }
+
+    const pomodoroRoundLimit = 4
 
     /*
         Condition to stop the timer when minutes and seconds reach 0
     */
     if (minutes <= 0 && seconds <= 0) {
         clearInterval(interval.current)
+        const activeTabName = getCurrentActiveTabName()
+
+        if (activeTabName === 'pomodoro') {
+            increasePomodoroRounds()
+            if (pomodoroRounds < pomodoroRoundLimit) {
+                handleClickShortBreak()
+            } else if (pomodoroRounds > pomodoroRoundLimit) {
+                resetPomodoroRounds()
+                handleClickLongBreak()
+            }
+        } else if (activeTabName === 'short break' || activeTabName === 'long break') {
+            handleClickPomodoro()
+        }
     }
 
     const handleStartRestartClick = () => {
@@ -328,9 +351,10 @@ function App() {
     /* ************************************************************* */
     
   return (
-    <div className='main'>
+    <div className='main' >
       <Header></Header>
       <Homepage
+        pomodoroRounds={pomodoroRounds}
         timePomodoro={timePomodoro}
         timeShortBreak={timeShortBreak}
         timeLongBreak={timeLongBreak}
@@ -362,6 +386,7 @@ function App() {
         maxValue={maxValue}
         minValue={minValue}
         toggleModal={toggleModal}
+        handleKeyDown={handleKeyDown}
         handleClickApply={handleClickApply}
         timePomodoro={timePomodoro}
         timeShortBreak={timeShortBreak}
