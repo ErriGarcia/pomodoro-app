@@ -1,5 +1,6 @@
 {
-  "name": "react-starter-kit",
+  "name": "pomodoro-app",
+  "homepage": "https://errigarcia.github.io/pomodoro-app/",
   "version": "0.1.0",
   "private": false,
   "dependencies": {
