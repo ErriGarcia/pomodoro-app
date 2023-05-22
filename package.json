@@ -1,6 +1,6 @@
 {
   "name": "pomodoro-app",
-  "homepage": "https://errigarcia.github.io/pomodoro-app/",
+  "homepage": "./",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
