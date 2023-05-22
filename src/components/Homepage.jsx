@@ -1,4 +1,10 @@
+import click from '../assets/click.mp3'
+
 const Homepage = ({pomodoroRounds, updateFirstFont, updateSecondFont, updateThirdFont, toggleClassCheck, toggleClassCheckShortBreak, toggleClassCheckLongBreak, handleClickPomodoro, handleClickShortBreak, handleClickLongBreak, minutes, seconds, handleStartRestartClick, textButton}) => {
+
+    const playClickSound = () => {
+        new Audio(click).play()
+    }
 
     return (
         <>
@@ -28,7 +34,7 @@ const Homepage = ({pomodoroRounds, updateFirstFont, updateSecondFont, updateThir
                         {minutes < 10 ? '0'+minutes : minutes}:{seconds < 10 ? '0'+seconds : seconds}
                     </div>
                     <button
-                        onClick={handleStartRestartClick}
+                        onClick={() => {handleStartRestartClick(); playClickSound()}}
                         className={`circle-line-time-button-start ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`}>{textButton}
                     </button>
                 </div>

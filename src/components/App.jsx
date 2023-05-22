@@ -3,6 +3,7 @@ import Homepage from './Homepage'
 import Header from './Header'
 import Modal from './Modal'
 import { useRef, useState } from 'react'
+import endTimer from '../assets/end-timer.mp3'
 
 
 function App() {
@@ -203,10 +204,15 @@ function App() {
 
     const pomodoroRoundLimit = 4
 
+    const playEndTimer = () => {
+        new Audio(endTimer).play()
+    }
+
     /*
         Condition to stop the timer when minutes and seconds reach 0
     */
     if (minutes <= 0 && seconds <= 0) {
+        playEndTimer()
         clearInterval(interval.current)
         const activeTabName = getCurrentActiveTabName()
 
