@@ -4,19 +4,15 @@
 @import './core/variables';
 
 .main {
-    height: 100%;
+    height: 100vh;
     padding: 32px 24px;
     background-color: $blue-color;
-    @include displayFlex(column, center, center);
-
-    &-header {
-        margin-top: 48px;
-    }
+    @include displayFlex(column, space-between, center);
 
     // {/* Buttons */}
     &-container-buttons {
         min-width: 327px;
-        margin-top: 45px;
+        // margin-top: 45px;
         padding: 8px 6px 8px 6px;
         background-color: $dark-purple-color;
         color: $grey-color;
@@ -51,7 +47,7 @@
 
     // {/* Circle */}
     .circle {
-        margin-top: 48px;
+        // margin-top: 48px;
         min-width: 300px;
         min-height: 300px;
         background: linear-gradient(to left top, #2E325A, #0E112A);
@@ -63,7 +59,7 @@
         @include tablet {
             min-width: 410px;
             min-height: 410px;
-            margin-top: 110px;
+            // margin-top: 110px; 
         }
 
         &-line-time {
@@ -105,15 +101,15 @@
     &-pomodoro-rounds {
         font-size: 16px;
         color: $grey-color;
-        margin-top: 48px;
+        // margin-top: 48px;
     }
 
     // {/* Settings */}
     .settings-button {
-        margin-top: 48px;
+        // margin-top: 48px;
 
         @include tablet {
-            margin-top: 140px;
+            // margin-top: 140px;
             margin-bottom: 68px;
         }
 
