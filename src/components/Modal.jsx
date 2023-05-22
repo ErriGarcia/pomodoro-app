@@ -3,7 +3,7 @@ import SettingsColorSection from './SettingsColorSection'
 import SettingsFontSection from './SettingsFontSection'
 import SettingsTimeSection from './SettingsTimeSection'
 
-const Modal = ({modal, maxValue, minValue, toggleModal, handleClickApply, timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, firstFont, secondFont, thirdFont, classFirstFont, classSecondFont, classThirdFont, handleClickFirstFont, handleClickSecondFont, handleClickThirdFont, updateFirstFont, updateSecondFont, updateThirdFont, handleClickFirstColor, handleClickSecondColor, handleClickThirdColor, toggleFirstColor, toggleSecondColor, toggleThirdColor, updateFirstColor, updateSecondColor, updateThirdColor}) => {
+const Modal = ({handleKeyDown, modal, maxValue, minValue, toggleModal, handleClickApply, timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, firstFont, secondFont, thirdFont, classFirstFont, classSecondFont, classThirdFont, handleClickFirstFont, handleClickSecondFont, handleClickThirdFont, updateFirstFont, updateSecondFont, updateThirdFont, handleClickFirstColor, handleClickSecondColor, handleClickThirdColor, toggleFirstColor, toggleSecondColor, toggleThirdColor, updateFirstColor, updateSecondColor, updateThirdColor}) => {
 
     // const [modal, setModal] = useState(false)
 
@@ -48,6 +48,7 @@ const Modal = ({modal, maxValue, minValue, toggleModal, handleClickApply, timePo
 
                     {/* Time Section */}
                     <SettingsTimeSection
+                        handleKeyDown={handleKeyDown}
                         maxValue={maxValue}
                         minValue={minValue}
                         handleClickApply={handleClickApply}
@@ -82,9 +83,10 @@ const Modal = ({modal, maxValue, minValue, toggleModal, handleClickApply, timePo
                         updateThirdFont={updateThirdFont}
                     >
                     </SettingsFontSection>
-                    <hr className='first-line' />
+                    {/* <hr className='first-line' /> */}
 
                     {/* Color Section */}
+                    {/*
                     <SettingsColorSection
                         updateFirstFont={updateFirstFont}
                         updateSecondFont={updateSecondFont}
@@ -99,12 +101,14 @@ const Modal = ({modal, maxValue, minValue, toggleModal, handleClickApply, timePo
                         toggleThirdColor={toggleThirdColor}
                     >
                     </SettingsColorSection>
+                    */}
 
                     <div className='settings-container-apply-container'>
                         <button 
                             className={`settings-container-apply-container-button ${updateFirstFont} ${updateSecondFont} ${updateThirdFont} ${updateFirstColor} ${updateSecondColor} ${updateThirdColor}`}
                             type='submit'
                             onClick={handleClickApply}
+                            onKeyDown={handleKeyDown}
                         >
                             apply
                         </button>

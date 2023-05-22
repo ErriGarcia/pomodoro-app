@@ -237,6 +237,24 @@
                 }
 
             }
+
+            &-error {
+                margin-top: 24px;
+                @include displayFlex(row, center, center);
+                font-size: 12px;
+                color: red;
+                &-icon {
+                    font-size: 12px;
+                }
+            }
+            
+            .display-none {
+                display: none;
+            }
+
+            .border-error {
+                border: solid 2px red;
+            }
         }
 
         // {/* Font Section */}

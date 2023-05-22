@@ -1,4 +1,4 @@
-const SettingsTimeSection = ({maxValue, minValue, timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, updateFirstFont, updateSecondFont, updateThirdFont}) => {
+const SettingsTimeSection = ({handleKeyDown, maxValue, minValue, timePomodoro, timeShortBreak, timeLongBreak, handleTimePomodoro, handleTimeShortBreak, handleTimeLongBreak, updateFirstFont, updateSecondFont, updateThirdFont}) => {
 
     const handleInputTimePomodoro = (ev) => {
         handleTimePomodoro(ev.target.value)
@@ -12,20 +12,54 @@ const SettingsTimeSection = ({maxValue, minValue, timePomodoro, timeShortBreak, 
         handleTimeLongBreak(ev.target.value)
     }
 
-    // {timePomodoro > maxValue ? maxValue : timePomodoro < minValue ? minValue : timePomodoro}
+    const showOrHideErrorMessage = () => {
+        if (timePomodoro > maxValue || timePomodoro < minValue) {
+            return ''
+        } else if (timeShortBreak > maxValue || timeShortBreak < minValue) {
+            return ''
+        } else if (timeLongBreak > maxValue || timeLongBreak < minValue) {
+            return ''
+        } else {
+            return 'display-none'
+        }
+    }
+    
+    const showOrHideBorderErrorPomodoro = () => {
+        if (timePomodoro > maxValue || timePomodoro < minValue) {
+            return 'border-error'
+        } else {
+            return ''
+        }
+    }
+
+    const showOrHideBorderErrorShortBreak = () => {
+        if (timeShortBreak > maxValue || timeShortBreak < minValue) {
+            return 'border-error'
+        } else {
+            return ''
+        }
+    }
+
+    const showOrHideBorderErrorLongBreak = () => {
+        if (timeLongBreak > maxValue || timeLongBreak < minValue) {
+            return 'border-error'
+        } else {
+            return ''
+        }
+    }
 
     return (
-        <section className='settings-container-time'>
+        <fieldset className='settings-container-time'>
             <h3 className={`settings-container-time-title ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`}>
             time (minutes)
             </h3>
-            <fieldset className='settings-container-time-form'>
+            <section className='settings-container-time-form'>
                 <div className='settings-container-time-form-container'>
                     <label className={`settings-container-time-form-container-label ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`} htmlFor='pomodoro'>
                     pomodoro
                     </label>
                     <input 
-                        className={`settings-container-time-form-container-input ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`}
+                        className={`settings-container-time-form-container-input ${updateFirstFont} ${updateSecondFont} ${updateThirdFont} ${showOrHideBorderErrorPomodoro()}`}
                         type='number' 
                         name='pomodoro' 
                         id='pomodoro'
@@ -33,6 +67,8 @@ const SettingsTimeSection = ({maxValue, minValue, timePomodoro, timeShortBreak, 
                         min={minValue}
                         max={maxValue}
                         onChange={handleInputTimePomodoro}
+                        onKeyDown={handleKeyDown}
+
                     />
                 </div>
 
@@ -41,7 +77,7 @@ const SettingsTimeSection = ({maxValue, minValue, timePomodoro, timeShortBreak, 
                     short break
                     </label>
                     <input 
-                        className={`settings-container-time-form-container-input ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`} 
+                        className={`settings-container-time-form-container-input ${updateFirstFont} ${updateSecondFont} ${updateThirdFont} ${showOrHideBorderErrorShortBreak()}`} 
                         name='short-break' 
                         id='short-break' 
                         type='number'
@@ -49,6 +85,7 @@ const SettingsTimeSection = ({maxValue, minValue, timePomodoro, timeShortBreak, 
                         max={maxValue}
                         value={timeShortBreak}
                         onChange={handleInputTimeShortBreak}
+                        onKeyDown={handleKeyDown}
                     />
                 </div>
 
@@ -58,7 +95,7 @@ const SettingsTimeSection = ({maxValue, minValue, timePomodoro, timeShortBreak, 
                     long break
                     </label>
                     <input 
-                        className={`settings-container-time-form-container-input ${updateFirstFont} ${updateSecondFont} ${updateThirdFont}`} 
+                        className={`settings-container-time-form-container-input ${updateFirstFont} ${updateSecondFont} ${updateThirdFont} ${showOrHideBorderErrorLongBreak()}`} 
                         name='long-break' 
                         id='long-break' 
                         type='number'
@@ -66,10 +103,17 @@ const SettingsTimeSection = ({maxValue, minValue, timePomodoro, timeShortBreak, 
                         max={maxValue}
                         value={timeLongBreak}
                         onChange={handleInputTimeLongBreak}
+                        onKeyDown={handleKeyDown}
                     />
                 </div>
-            </fieldset>
-        </section>
+            </section>
+            <div className={`settings-container-time-error ${showOrHideErrorMessage()}`}>
+                <span className='material-symbols-outlined settings-container-time-error-icon'>
+                    priority_high
+                </span>
+                <p className='settings-container-time-error-message'>Please enter a valid number between 1 and 60</p>
+            </div>
+        </fieldset>
     )
 }
 

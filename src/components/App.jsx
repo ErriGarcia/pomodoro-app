@@ -2,7 +2,7 @@ import '../styles/App.scss'
 import Homepage from './Homepage'
 import Header from './Header'
 import Modal from './Modal'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 
 function App() {
@@ -18,10 +18,9 @@ function App() {
 
     const handleClickApply = (e) => {
         e.preventDefault()
-        console.log('entrooooo')
         const isValid = validateData()
         if (!isValid) {
-            console.log('invalid')
+            console.log('invalid click apply')
             return
         }
         const activeTabName = getCurrentActiveTabName()
@@ -30,12 +29,13 @@ function App() {
     }
 
     const handleKeyDown = (e) => {
-        console.log(e)
+        if (e.code === 'Enter') {
+            e.preventDefault()
+        }
     }
 
     const validateData = () => {
         if (timePomodoro > maxValue || timePomodoro < minValue || timeShortBreak > maxValue || timeShortBreak < minValue || timeLongBreak > maxValue || timeLongBreak < minValue) {
-            console.log('error')
             return false
         } else {
             return true
