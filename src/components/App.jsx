@@ -162,7 +162,7 @@ function App() {
     const orangeColor = '#F87070'
     const blueColor = '#1E213F'
     const greyColor = '#D7E0FF'
-    const aquaColor = '##70F3F8'
+    // const aquaColor = '##70F3F8'
 
     const changePercentBackground = (color) => {
         document.getElementById('timer').style.background = `radial-gradient(closest-side, ${blueColor} 95%, transparent 80% 100%), conic-gradient(${color} ${startingPoint -= nameToChange}%, ${greyColor} 0)`
