@@ -4,13 +4,10 @@
 @import './core/variables';
 
 .main {
-    height: 100vh;
+    height: 100%;
     padding: 32px 24px;
     background-color: $blue-color;
     @include displayFlex(column, center, center);
-    @include tablet {
-        height: 100%;
-    }
 
     &-header {
         margin-top: 48px;
