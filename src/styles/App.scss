@@ -12,7 +12,6 @@
     // {/* Buttons */}
     &-container-buttons {
         min-width: 327px;
-        // margin-top: 45px;
         padding: 8px 6px 8px 6px;
         background-color: $dark-purple-color;
         color: $grey-color;
@@ -47,7 +46,6 @@
 
     // {/* Circle */}
     .circle {
-        // margin-top: 48px;
         min-width: 300px;
         min-height: 300px;
         background: linear-gradient(to left top, #2E325A, #0E112A);
@@ -56,27 +54,19 @@
         font-family: $font-kumbh-sans;
         color: $grey-color;
 
-        @include tablet {
-            min-width: 410px;
-            min-height: 410px;
-            // margin-top: 110px; 
-        }
-
         &-line-time {
             min-width: 248px;
             min-height: 248px;
             @include circle();
             @include displayFlex(column, center, center);
-            // border: solid 10px $orange-color;
-            // background-color: conic-gradient(red 10%, transparent 100%);
             background:
                     radial-gradient(closest-side, $blue-color 95%, transparent 80% 100%),
                     conic-gradient($orange-color 100%, $grey-color 0);
 
 
             @include tablet {
-                min-width: 340px;
-                min-height: 340px;
+                min-width: 260px;
+                min-height: 260px;
             }
 
             &-pomodoro {
@@ -101,15 +91,12 @@
     &-pomodoro-rounds {
         font-size: 16px;
         color: $grey-color;
-        // margin-top: 48px;
     }
 
     // {/* Settings */}
     .settings-button {
-        // margin-top: 48px;
 
         @include tablet {
-            // margin-top: 140px;
             margin-bottom: 68px;
         }
 
@@ -138,7 +125,6 @@
             margin: auto;
             margin-top: 13%;
             width: 85%;
-            // height: 80%;
             padding: 24px;
             color: $dark-purple-color;
             border-radius: 15px;
@@ -225,7 +211,6 @@
                         background-color: $input-background-color;
                         border-radius: 10px;
                         padding-left: 16px;
-                        // font: 14px $font-kumbh-sans;
                         font-size: 14px;
 
                         @include tablet {
@@ -286,8 +271,6 @@
                     padding: 12px 10px;
                     @include displayFlex(column, center, center);
                     font: 15px $font-kumbh-sans;
-                    // color: $white-color;
-                    // background-color: $dark-purple-color;
 
                     @include tablet {
                         margin-top: 0;
@@ -296,8 +279,6 @@
 
                 &-button-2, &-button-3 {
                     font-family: $font-roboto-slab;
-                    // color: $dark-purple-color;
-                    // background-color: $default-background-color;
                 }
 
                 &-button-3 {
@@ -342,28 +323,14 @@
 
                 &-button-1 {
                     background-color: $orange-color;
-
-                    // .material-icons {
-                    //     color: $dark-purple-color;
-                    // }
                 }
 
                 &-button-2 {
                     background-color: $aqua-color;
-
-                    // .material-icons {
-                    //     display: none;
-                    //     // color: $dark-purple-color;
-                    // }
                 }
 
                 &-button-3 {
                     background-color: $pink-color;
-
-                    // .material-icons {
-                    //     display: none;
-                    //     // color: $dark-purple-color;
-                    // }
                 }
             }
         }
@@ -375,14 +342,9 @@
             border-radius: 26.5px;
             width: 140px;
             height: 53px;
-            // background-color: $orange-color;
             position: absolute;
             bottom: -24px;
             color: $white-color;
-
-            @include tablet {
-                // bottom: 78px;
-            }
             }
             &-button::first-letter {
                 text-transform: uppercase;
@@ -394,7 +356,6 @@
     .active-button {
         color: #1E213F;
         background-color: #F87070;
-        // padding: 18px 12px;
         border-radius: 26.5px;
         width: 100px;
         height: 53px;
